@@ -13,6 +13,9 @@ export class Offer {
   public createdOn!: Date;
 
   @Column({ type: "timestamp", nullable: true })
+  public updatedAt!: Date;
+
+  @Column({ type: "timestamp", nullable: true })
   public deletedAt!: Date;
 
   @Column()
