@@ -3,7 +3,6 @@ import { Company } from "./entity/Company";
 import { Client } from "./entity/Client";
 import { SuperAdmin } from "./entity/SuperAdmin";
 import { Offer } from "./entity/Offer";
-import { Historic } from "./entity/Historic";
 
 AppDataSource.initialize()
   .then(async () => {
