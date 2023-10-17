@@ -1,5 +1,11 @@
-import { Entity, PrimaryGeneratedColumn, ManyToMany, Column } from "typeorm";
-import { ClientOfferPermission } from "./ClientOfferPermission";
+import {
+  Entity,
+  PrimaryGeneratedColumn,
+  ManyToMany,
+  Column,
+  JoinTable,
+} from "typeorm";
+import { Offer } from "./Offer";
 
 @Entity()
 export class Client {
@@ -24,9 +30,17 @@ export class Client {
   @Column()
   public phoneNumber!: number;
 
-  @ManyToMany(
-    () => ClientOfferPermission,
-    (clientOfferPermission) => clientOfferPermission.clients
-  )
-  public clientOfferPermissions!: ClientOfferPermission[];
+  @ManyToMany(() => Offer, (offer) => offer.clients)
+  @JoinTable({
+    name: "client_offer_permission",
+    joinColumn: {
+      name: "client_id",
+      referencedColumnName: "id",
+    },
+    inverseJoinColumn: {
+      name: "offer_id",
+      referencedColumnName: "id",
+    },
+  })
+  public offers!: Offer[];
 }
