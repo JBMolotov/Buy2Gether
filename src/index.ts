@@ -94,24 +94,6 @@ AppDataSource.initialize()
 
     console.log();
 
-    // teste historic
-
-    const historicRepository = AppDataSource.getRepository(Historic);
-    const historic = historicRepository.create({
-      amount: 2,
-      client: client,
-      offer: offer,
-    });
-
-    console.log("Saving historic: ", historic);
-    await historicRepository.save(historic);
-    console.log("Historic saved");
-
-    const savedHistorics = await historicRepository.find();
-    console.log("Loaded from database: ", savedHistorics);
-
-    console.log();
-
     // teste super admin
 
     const superAdminRepository = AppDataSource.getRepository(SuperAdmin);
