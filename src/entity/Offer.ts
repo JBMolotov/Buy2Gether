@@ -1,5 +1,5 @@
-import { Entity, PrimaryGeneratedColumn, Column, ManyToOne } from "typeorm";
-import { ClientOfferPermission } from "./ClientOfferPermission";
+import { Entity, PrimaryGeneratedColumn, Column, ManyToMany } from "typeorm";
+import { Client } from "./Client";
 
 @Entity()
 export class Offer {
@@ -36,9 +36,6 @@ export class Offer {
   @Column({ type: "int", default: 1 })
   public version!: number;
 
-  @ManyToOne(
-    () => ClientOfferPermission,
-    (clientOfferPermission) => clientOfferPermission.offers
-  )
-  public clientOfferPermission!: ClientOfferPermission;
+  @ManyToMany(() => Client, (client) => client.offers)
+  public clients!: Client[];
 }

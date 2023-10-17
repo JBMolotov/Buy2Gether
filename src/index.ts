@@ -1,6 +1,5 @@
 import { AppDataSource } from "./data-source";
 import { Company } from "./entity/Company";
-import { ClientOfferPermission } from "./entity/ClientOfferPermission";
 import { Client } from "./entity/Client";
 import { SuperAdmin } from "./entity/SuperAdmin";
 import { Offer } from "./entity/Offer";
@@ -80,6 +79,26 @@ AppDataSource.initialize()
     const savedSuperAdmins = await superAdminRepository.find();
     console.log("Loaded super admins: ", savedSuperAdmins);
 
-    console.log();
+    // // teste permissao
+    // const clientRepository = AppDataSource.getRepository(Client);
+    // const offerRepository = AppDataSource.getRepository(Offer);
+
+    // const clientId = 1;
+    // const offerId = 1;
+
+    // const client = await clientRepository.findOne({
+    //   where: { id: clientId },
+    //   relations: ["offers"],
+    // });
+    // const offer = await offerRepository.findOne({
+    //   where: { id: offerId },
+    // });
+    // if (!client || !offer) {
+    //   console.error("Client or offer not found!");
+    //   return;
+    // }
+    // client.offers.push(offer);
+    // await clientRepository.save(client);
+    // console.log("Permission saved");
   })
   .catch((error) => console.log(error));
