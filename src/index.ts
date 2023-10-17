@@ -4,6 +4,7 @@ import { ClientOfferPermission } from "./entity/ClientOfferPermission";
 import { Client } from "./entity/Client";
 import { SuperAdmin } from "./entity/SuperAdmin";
 import { Offer } from "./entity/Offer";
+import { Historic } from "./entity/Historic";
 
 AppDataSource.initialize()
   .then(async () => {
@@ -38,8 +39,19 @@ AppDataSource.initialize()
       phoneNumber: 123456789,
     });
 
-    console.log("Saving client");
+    const client2 = clientRepository.create({
+      cpf: 6574,
+      name: "Pedro",
+      email: "pedro@pedro.br",
+      password: "12345",
+      address: "rua sao paulo 100",
+      phoneNumber: 56743812,
+    });
+
+    console.log("Saving client", client);
     await clientRepository.save(client);
+    console.log("Saving client", client2);
+    await clientRepository.save(client2);
     console.log("Client saved");
     const savedClients = await clientRepository.find();
     console.log("Loaded clients: ", savedClients);
@@ -56,8 +68,20 @@ AppDataSource.initialize()
       isPublic: true,
     });
 
+    const offer2 = offerRepository.create({
+      name: "3 carrinhos",
+      price: 30,
+      description: "3 carrinhos hot wheels",
+      minimalForConsolidation: 7,
+      isPublic: false,
+    });
+
     console.log("Saving offer: ", offer);
     await offerRepository.save(offer);
+    console.log("Offer saved");
+
+    console.log("Saving offer: ", offer2);
+    await offerRepository.save(offer2);
     console.log("Offer saved");
 
     const savedOffers = await offerRepository.find();
@@ -65,7 +89,53 @@ AppDataSource.initialize()
 
     console.log();
 
+    // teste client offer permission
+
+    const copRepository = AppDataSource.getRepository(ClientOfferPermission)
+
+    const cop = copRepository.create({
+      clients: [client, client2],
+      offer: offer,
+    })
+
+    const cop2 = copRepository.create({
+      clients: [client],
+      offer: offer2,
+    })
+
+    console.log("Saving client offer perission: ", cop)
+    await copRepository.save(cop)
+    console.log("Saved client offer permission")
+
+    console.log("Saving client offer perission: ", cop2)
+    await copRepository.save(cop2)
+    console.log("Saved client offer permission")
+
+    const savedCOPs = await copRepository.find()
+    console.log("Loaded client offer permissions: ", savedCOPs)
+
+    console.log()
+
+    // teste historic
+
+    const historicRepository = AppDataSource.getRepository(Historic)
+    const historic = historicRepository.create({
+      amount: 2,
+      client: client,
+      offer: offer,
+    })
+
+    console.log("Saving historic: ", historic)
+    await historicRepository.save(historic)
+    console.log("Historic saved")
+
+    const savedHistorics = await historicRepository.find()
+    console.log("Loaded historic: ", savedHistorics)
+
+    console.log()
+
     // teste super admin
+
     const superAdminRepository = AppDataSource.getRepository(SuperAdmin);
     const superAdmin = superAdminRepository.create({
       name: "admin",

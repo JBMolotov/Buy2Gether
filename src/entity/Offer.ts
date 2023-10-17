@@ -35,10 +35,4 @@ export class Offer {
 
   @Column({ type: "int", default: 1 })
   public version!: number;
-
-  @ManyToOne(
-    () => ClientOfferPermission,
-    (clientOfferPermission) => clientOfferPermission.offers
-  )
-  public clientOfferPermission!: ClientOfferPermission;
 }

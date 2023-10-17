@@ -1,4 +1,4 @@
-import { Entity, PrimaryGeneratedColumn, ManyToMany, JoinTable } from "typeorm";
+import { Entity, PrimaryGeneratedColumn, ManyToMany, JoinTable, OneToOne, JoinColumn } from "typeorm";
 import { Client } from "./Client";
 import { Offer } from "./Offer";
 
@@ -7,10 +7,11 @@ export class ClientOfferPermission {
   @PrimaryGeneratedColumn()
   public id!: number;
 
-  @ManyToMany(() => Client, (client) => client.clientOfferPermissions)
+  @ManyToMany(() => Client)
   @JoinTable()
   public clients!: Client[];
 
-  @ManyToMany(() => Offer, (offer) => offer.clientOfferPermission)
-  public offers!: Offer[];
+  @OneToOne(() => Offer)
+  @JoinColumn()
+  public offer!: Offer;
 }
