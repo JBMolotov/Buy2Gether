@@ -6,13 +6,14 @@ import { Client } from "./entity/Client";
 import { SuperAdmin } from "./entity/SuperAdmin";
 import { Offer } from "./entity/Offer";
 import { Historic } from "./entity/Historic";
+import { dbConfig } from "./dbConfig";
 
 export const AppDataSource = new DataSource({
   type: "postgres",
-  host: "localhost",
-  port: 5432,
-  username: "postgres",
-  password: "postgres",
+  host: dbConfig.host,
+  port: dbConfig.port,
+  username: dbConfig.username,
+  password: dbConfig.password,
   database: "postgres",
   synchronize: true,
   logging: false,

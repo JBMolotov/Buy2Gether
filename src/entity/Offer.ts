@@ -30,6 +30,9 @@ export class Offer {
   @Column({ nullable: true })
   public minimalForConsolidation!: number;
 
+  @Column({ nullable: true })
+  public totalAmount!: number;
+
   @Column()
   public isPublic!: boolean;
 

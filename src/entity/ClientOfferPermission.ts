@@ -12,5 +12,6 @@ export class ClientOfferPermission {
   public clients!: Client[];
 
   @ManyToMany(() => Offer, (offer) => offer.clientOfferPermission)
+  @JoinTable()
   public offers!: Offer[];
 }
