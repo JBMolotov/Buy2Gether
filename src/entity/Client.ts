@@ -13,7 +13,7 @@ export class Client {
   public id!: number;
 
   @Column()
-  public cpf!: number;
+  public cpf!: string;
 
   @Column()
   public name!: string;
@@ -28,7 +28,7 @@ export class Client {
   public address!: string;
 
   @Column()
-  public phoneNumber!: number;
+  public phoneNumber!: string;
 
   @ManyToMany(() => Offer, (offer) => offer.clients)
   @JoinTable({

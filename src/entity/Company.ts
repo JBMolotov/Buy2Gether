@@ -6,7 +6,7 @@ export class Company {
   public id!: number;
 
   @Column()
-  public cpfCnpj!: number;
+  public cpfCnpj!: string;
 
   @Column()
   public name!: string;
