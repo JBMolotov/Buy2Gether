@@ -1,2 +1,13 @@
 require("./clients/create");
+require("./clients/update");
 require("./companies/create");
+require("./clients/create");
+require("./clients/update");
+require("./clients/search/{id}");
+require("./clients/searchAll");
+require("./clients/delete");
+require("./companies/create");
+require("./companies/update");
+require("./companies/search/{id}");
+require("./companies/searchAll");
+require("./companies/delete");

@@ -4,15 +4,18 @@ import {
   ManyToMany,
   Column,
   JoinTable,
+  Index,
+  BaseEntity,
 } from "typeorm";
 import { Offer } from "./Offer";
 
 @Entity()
-export class Client {
+export class Client /*extends BaseEntity*/{
   @PrimaryGeneratedColumn()
   public id!: number;
 
   @Column()
+  @Index({ unique: true })
   public cpf!: string;
 
   @Column()
