@@ -32,6 +32,5 @@ createCompanyRouter.post("/", async (req, res) => {
     console.log("CPF/CNPJ already registred");
     res.send("CPF/CNPJ already registred");
   };
-
   //res.send("Erro")
 });
