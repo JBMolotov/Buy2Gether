@@ -1,24 +1,15 @@
 import { Router } from "express";
-import { Client } from "../../entity/Client";
 import { AppDataSource } from "../../data-source";
-import { clientIsValid } from "../../utils/validation/validation";
+import { Company } from "../../entity/Company";
 
 export const searchCompanyRouter = Router();
 
-searchCompanyRouter.get("/", async (req, res) => {
-  const manager = AppDataSource.createEntityManager();
-  const cpf = req.params;
+searchCompanyRouter.get("/:id", async (req, res) => {
+  const id = req.params.id;
+  const company = await AppDataSource.getRepository(Company).findOneBy({
+    id: +id
+  });
+  console.log(company)
 
-  // const client = await Client.findOneBy({
-  //   cpf: ,
-  // })
-
-  // if(clientIsValid(clientData)){
-  //   const client = manager.create(Client, clientData);
-    
-  //   await manager.save(Client, client);
-  //   res.send(client);
-  // }
-
-  // //res.send("Erro")
+  res.send(company);
 });
