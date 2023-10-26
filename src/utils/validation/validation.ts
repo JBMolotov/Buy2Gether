@@ -3,8 +3,6 @@ import { Company } from "../../entity/Company";
 
 export function clientIsValid(client: Client): boolean{
 
-  console.log("clientIsValid");
-
   if(!cpfCnpjIsValid(client.cpf)){
     return false;
   }
@@ -21,6 +19,8 @@ export function clientIsValid(client: Client): boolean{
     return false;
   }
 
+  console.log("clientIsValid");
+  
   return true;
 };
 
@@ -48,9 +48,37 @@ export function companyIsValid(company: Company): boolean{
 };
 
 function cpfCnpjIsValid(cpfCnpj: string): boolean{
-  // https://pt.stackoverflow.com/questions/1386/expressão-regular-para-validação-de-e-mail
+  // https://medium.com/shopify-hub/como-validar-cpf-e-cnpj-usando-expressões-regulares-regex-com-javascript-60779229455d
+  // https://pt.stackoverflow.com/questions/11045/expressão-regular-para-validar-um-campo-que-aceita-cpf-ou-cnpj
   const regex =  /(^\d{3}\.\d{3}\.\d{3}\-\d{2}$)|(^\d{2}\.\d{3}\.\d{3}\/\d{4}\-\d{2}$)/;
   return regex.test(cpfCnpj)
+};
+
+function emailIsValid(email: string): boolean{
+  // https://pt.stackoverflow.com/questions/1386/expressão-regular-para-validação-de-e-mail
+  const regex = /^[\w+.]+@\w+\.\w{2,}(?:\.\w{2})?$/;
+  return regex.test(email)
+};
+
+function passwordIsValid(password: string): boolean{
+  // https://pt.stackoverflow.com/questions/71709/verificar-input-senha
+  // (?=(?:.*?[A-Z]){x}) - Mínimo x letras maiúsculas
+  // (?=(?:.*?[0-9]){y}) - Mínimo y números
+  // (?=(?:.*?[!@#$%*()_+^&}{:;?.]){z})(?!.*\s)[0-9a-zA-Z!@#;$%*(){}_+^&] - Mínimo z caractere especial
+  const regex = /^(?=(?:.*?[A-Z]){1})(?=(?:.*?[0-9]){1})(?=(?:.*?[!@#$%*()_+^&}{:;?.]){1})(?!.*\s)[0-9a-zA-Z!@#$%;*(){}_+^&]*$/; 
+  return password.length > 8 && regex.test(password);
+};
+
+function phoneNumberIsValid(phoneNumber: string): boolean{
+  // https://andersonarruda.com.br/article/ValidandocelularbrasileirocomExpressaoRegular/9
+  const regex = /^([14689][0-9]|2[12478]|3([1-5]|[7-8])|5([13-5])|7[193-7])9[0-9]{8}$/;
+  return regex.test(phoneNumber);
+};
+
+//TODO
+function fieldOfActivityIsValid(fieldOfActivity: string): boolean{
+  
+ return true;
 };
 
 // function cpfIsValid(cpf: String): boolean{
@@ -111,33 +139,3 @@ function cpfCnpjIsValid(cpfCnpj: string): boolean{
 
 //   return true
 // };
-
-function emailIsValid(email: string): boolean{
-  // https://pt.stackoverflow.com/questions/1386/expressão-regular-para-validação-de-e-mail
-  const regex = /^[\w+.]+@\w+\.\w{2,}(?:\.\w{2})?$/;
-  return regex.test(email)
-};
-
-function passwordIsValid(password: string): boolean{
-  // https://pt.stackoverflow.com/questions/71709/verificar-input-senha
-  // (?=(?:.*?[A-Z]){x}) - Mínimo x letras maiúsculas
-  // (?=(?:.*?[0-9]){y}) - Mínimo y números
-  // (?=(?:.*?[!@#$%*()_+^&}{:;?.]){z})(?!.*\s)[0-9a-zA-Z!@#;$%*(){}_+^&] - Mínimo z caractere especial
-  const regex = /^(?=(?:.*?[A-Z]){1})(?=(?:.*?[0-9]){1})(?=(?:.*?[!@#$%*()_+^&}{:;?.]){1})(?!.*\s)[0-9a-zA-Z!@#$%;*(){}_+^&]*$/; 
-  return password.length > 8 && regex.test(password);
-};
-
-function phoneNumberIsValid(phoneNumber: string): boolean{
-  // https://andersonarruda.com.br/article/ValidandocelularbrasileirocomExpressaoRegular/9
-  const regex = /^([14689][0-9]|2[12478]|3([1-5]|[7-8])|5([13-5])|7[193-7])9[0-9]{8}$/;
-  return regex.test(phoneNumber);
-};
-
-//TODO
-function fieldOfActivityIsValid(fieldOfActivity: string): boolean{
-  // https://andersonarruda.com.br/article/ValidandocelularbrasileirocomExpressaoRegular/9
-  //const regex = /^([14689][0-9]|2[12478]|3([1-5]|[7-8])|5([13-5])|7[193-7])9[0-9]{8}$/;
- //return regex.test(fieldOfActivity);
- return true;
-};
-

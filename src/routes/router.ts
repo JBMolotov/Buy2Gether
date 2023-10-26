@@ -12,13 +12,16 @@ import { deleteCompanyRouter } from "./companies/delete";
 
 export const router = Router();
 
+// client
 router.use("/clients/create", createClientRouter);
 router.use("/clients/update", updateClientRouter);
-router.use("/clients/search/{id}", searchClientRouter);
+router.use("/clients/search", searchClientRouter);
 router.use("/clients/searchAll", searchAllClientRouter);
 router.use("/clients/delete", deleteClientRouter);
+
+// company
 router.use("/companies/create", createCompanyRouter);
 router.use("/companies/update", updateCompanyRouter);
-router.use("/companies/search/{id}", searchCompanyRouter);
+router.use("/companies/search", searchCompanyRouter);
 router.use("/companies/searchAll", searchAllCompanyRouter);
 router.use("/companies/delete", deleteCompanyRouter);
