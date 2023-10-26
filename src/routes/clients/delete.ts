@@ -1,20 +1,17 @@
 import { Router } from "express";
 import { Client } from "../../entity/Client";
 import { AppDataSource } from "../../data-source";
-import { clientIsValid } from "../../utils/validation/validation";
 
 export const deleteClientRouter = Router();
 
-deleteClientRouter.put("/", async (req, res) => {
-  const manager = AppDataSource.createEntityManager();
-  const clientData = req.body;
-
-  // if(clientIsValid(clientData)){
-  //   const client = manager.create(Client, clientData);
-    
-  //   await manager.save(Client, client);
-  //   res.send(client);
-  // }
-
-  // //res.send("Erro")
+deleteClientRouter.delete("/:id", async (req, res) => {
+  const id = req.params.id;
+  await AppDataSource
+    .createQueryBuilder()
+    .delete()
+    .from(Client)
+    .where("id = :id", { id: +id })
+    .execute();
+  console.log("Client deleted");
+  res.send("Client deleted");
 });
