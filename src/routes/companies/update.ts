@@ -5,6 +5,7 @@ import { companyIsValid } from "../../utils/validation/validation";
 
 export const updateCompanyRouter = Router();
 
+// update por cpf/cnpj
 updateCompanyRouter.put("/", async (req, res) => {
   const companyData = req.body;
   //console.log(companyData);

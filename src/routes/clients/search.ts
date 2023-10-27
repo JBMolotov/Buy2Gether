@@ -4,6 +4,7 @@ import { AppDataSource } from "../../data-source";
 
 export const searchClientRouter = Router();
 
+// search por id
 searchClientRouter.get("/:id", async (req, res) => {
   const id = req.params.id;
   const client = await AppDataSource.getRepository(Client).findOneBy({

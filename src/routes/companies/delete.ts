@@ -4,6 +4,7 @@ import { Company } from "../../entity/Company";
 
 export const deleteCompanyRouter = Router();
 
+// delete por id
 deleteCompanyRouter.delete("/:id", async (req, res) => {
   const id = req.params.id;
   await AppDataSource

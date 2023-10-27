@@ -33,5 +33,5 @@ createClientRouter.post("/", async (req, res) => {
     res.send("CPF already registred");
   };
 
-  res.send("Erro")
+  //res.send("Erro")
 });

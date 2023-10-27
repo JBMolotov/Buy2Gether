@@ -5,6 +5,7 @@ import { clientIsValid } from "../../utils/validation/validation";
 
 export const updateClientRouter = Router();
 
+// update por cpf
 updateClientRouter.put("/", async (req, res) => {
 
   const clientData = req.body;

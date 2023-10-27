@@ -4,6 +4,7 @@ import { Company } from "../../entity/Company";
 
 export const searchCompanyRouter = Router();
 
+// search por id
 searchCompanyRouter.get("/:id", async (req, res) => {
   const id = req.params.id;
   const company = await AppDataSource.getRepository(Company).findOneBy({
