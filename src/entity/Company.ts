@@ -1,4 +1,4 @@
-import { Entity, PrimaryGeneratedColumn, Column } from "typeorm";
+import { Entity, PrimaryGeneratedColumn, Column, Index } from "typeorm";
 
 @Entity()
 export class Company {
@@ -6,6 +6,7 @@ export class Company {
   public id!: number;
 
   @Column()
+  @Index({ unique: true})
   public cpfCnpj!: string;
 
   @Column()
@@ -22,4 +23,7 @@ export class Company {
 
   @Column()
   public fieldOfActivity!: string;
+
+  @Column({ default: false })
+  public isApproved!: boolean;
 }

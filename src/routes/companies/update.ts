@@ -25,7 +25,8 @@ updateCompanyRouter.put("/", async (req, res) => {
         email: companyData.email,
         password: companyData.password,
         address: companyData.address,
-        fieldOfActivity: companyData.fieldOfActivity
+        fieldOfActivity: companyData.fieldOfActivity,
+        isApproved: companyData.isApproved
       });
       res.send(companyData);
     }
