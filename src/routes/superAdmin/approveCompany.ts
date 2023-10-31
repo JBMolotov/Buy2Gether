@@ -15,8 +15,8 @@ approveCompanyRouter.get("/:id", async (req, res) => {
     //console.log(company);
 
     if(company != null){
-        console.log("Appoved company");
-        res.send(
+        console.log("Approved company");
+        console.log(
             await repository.save({
                 id: company.id,
                 cpfCnpj: company.cpfCnpj,
@@ -24,6 +24,7 @@ approveCompanyRouter.get("/:id", async (req, res) => {
                 isApproved: true
             })
         );
+        res.send("Approved company");
     }
     else{
         console.log("Invalid id");
