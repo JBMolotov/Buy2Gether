@@ -12,16 +12,18 @@ createCompanyRouter.post("/", async (req, res) => {
   // busca se ja tem empresa cadastrado com esse cpf/cnpj 
   // se tiver, retorna empresa
   // se nao tiver, retorna nulo
-  const c = await AppDataSource.getRepository(Company).findOneBy({
+  const company = await AppDataSource.getRepository(Company).findOneBy({
     cpfCnpj: companyData.cpfCnpj
   });
 
-  if(c === null){ // nao tem empresa cadastrada com esse cpf/cnpj
+  if(company === null){ // nao tem empresa cadastrada com esse cpf/cnpj
     // verifica se dados sao validos
     if(companyIsValid(companyData)){
-      const company = manager.create(Company, companyData);
-      await manager.save(Company, company);
-      res.send(company);
+      const newCompany = manager.create(Company, companyData);
+      await manager.save(Company, newCompany);
+      console.log("Company sent to approval");
+      console.log(newCompany);
+      res.send("Company sent to approval");
     }
     else{
       console.log("Invalid data");
@@ -32,5 +34,4 @@ createCompanyRouter.post("/", async (req, res) => {
     console.log("CPF/CNPJ already registred");
     res.send("CPF/CNPJ already registred");
   };
-  //res.send("Erro")
 });
