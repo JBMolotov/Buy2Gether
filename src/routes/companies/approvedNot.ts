@@ -2,11 +2,11 @@ import { Router } from "express";
 import { AppDataSource } from "../../data-source";
 import { Company } from "../../entity/Company";
 
-export const approvedCompaniesRouter = Router();
+export const approvedNotRouter = Router();
 
-approvedCompaniesRouter.get("/", async (req, res) => {
+approvedNotRouter.get("/", async (req, res) => {
     const companies = await AppDataSource.getRepository(Company).findBy({
-        isApproved: true
+        isApproved: false
     });
     //console.log(companies);
     res.send(companies);
