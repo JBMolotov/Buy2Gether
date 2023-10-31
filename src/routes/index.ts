@@ -11,5 +11,8 @@ require("./companies/update");
 require("./companies/search");
 require("./companies/searchAll");
 require("./companies/delete");
-require("./companies/companiesToApprove");
-require("./companies/approvedCompanies");
+require("./companies/approved");
+require("./companies/approvedNot");
+
+// super admin
+require("./superAdmin/approveCompany");

@@ -11,9 +11,10 @@ import { updateCompanyRouter } from "./companies/update";
 import { searchCompanyRouter } from "./companies/search";
 import { searchAllCompanyRouter } from "./companies/searchAll";
 import { deleteCompanyRouter } from "./companies/delete";
+import { approvedNotRouter } from "./companies/approvedNot";
+import { approvedRouter } from "./companies/approved";
 
-import { companiesToApproveRouter } from "./companies/companiesToApprove";
-import { approvedCompaniesRouter } from "./companies/approvedCompanies";
+import { approveCompanyRouter } from "./superAdmin/approveCompany";
 
 export const router = Router();
 
@@ -30,5 +31,8 @@ router.use("/companies/update", updateCompanyRouter);
 router.use("/companies/search", searchCompanyRouter);
 router.use("/companies/searchAll", searchAllCompanyRouter);
 router.use("/companies/delete", deleteCompanyRouter);
-router.use("/companies/companiesToApprove", companiesToApproveRouter);
-router.use("/companies/approvedCompanies", approvedCompaniesRouter);
+router.use("/companies/approveNot", approvedNotRouter);
+router.use("/companies/approved", approvedRouter);
+
+// super admin
+router.use("/superAdmin/approveCompany", approveCompanyRouter);
