@@ -12,16 +12,18 @@ createClientRouter.post("/", async (req, res) => {
   // busca se ja tem cliente cadastrado com esse cpf 
   // se tiver, retorna cliente
   // se nao tiver, retorna nulo
-  const c = await AppDataSource.getRepository(Client).findOneBy({
+  const client = await AppDataSource.getRepository(Client).findOneBy({
     cpf: clientData.cpf
   });
 
-  if(c === null){ // nao tem cliente cadastrado com esse cpf
+  if(client === null){ // nao tem cliente cadastrado com esse cpf
     // verifica se dados sao validos
     if(clientIsValid(clientData)){
-      const client = manager.create(Client, clientData);
-      await manager.save(Client, client);
-      res.send(client);
+      const newClient = manager.create(Client, clientData);
+      await manager.save(Client, newClient);
+      console.log("Registered client");
+      console.log(newClient);
+      res.send("Registered client");
     }
     else{
       console.log("Invalid data");
@@ -32,6 +34,4 @@ createClientRouter.post("/", async (req, res) => {
     console.log("CPF already registred");
     res.send("CPF already registred");
   };
-
-  //res.send("Erro")
 });
