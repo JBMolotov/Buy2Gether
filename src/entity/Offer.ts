@@ -1,4 +1,4 @@
-import { Entity, PrimaryGeneratedColumn, Column, ManyToMany } from "typeorm";
+import { Entity, PrimaryGeneratedColumn, Column, ManyToMany, ManyToOne } from "typeorm";
 import { Client } from "./Client";
 
 @Entity()
@@ -41,4 +41,7 @@ export class Offer {
 
   @ManyToMany(() => Client, (client) => client.offers)
   public clients!: Client[];
+
+  @Column()
+  public companyId!: number;
 }
