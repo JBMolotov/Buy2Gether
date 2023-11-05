@@ -1,5 +1,6 @@
 import { Client } from "../../entity/Client";
 import { Company } from "../../entity/Company";
+import { Offer } from "../../entity/Offer";
 
 export function clientIsValid(client: Client): boolean{
 
@@ -26,8 +27,6 @@ export function clientIsValid(client: Client): boolean{
 
 export function companyIsValid(company: Company): boolean{
 
-  console.log("companyIsValid");
-
   if(!cpfCnpjIsValid(company.cpfCnpj)){
     return false;
   }
@@ -41,6 +40,17 @@ export function companyIsValid(company: Company): boolean{
   }
 
   if(!fieldOfActivityIsValid(company.fieldOfActivity)){
+    return false;
+  }
+
+  console.log("companyIsValid");
+
+  return true;
+};
+
+export function offerIsValid(offer: Offer): boolean{
+
+  if(offer.price < 0 || offer.minimalForFreeDelivery < 0 || offer.minimalForConsolidation < 0){
     return false;
   }
 
