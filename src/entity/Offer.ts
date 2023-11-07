@@ -44,4 +44,7 @@ export class Offer {
 
   @Column()
   public companyId!: number;
+
+  @Column({ default: false })
+  public isDeleted!: boolean;
 }
