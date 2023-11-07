@@ -41,7 +41,7 @@ router.use("/companies/update", updateCompanyRouter);
 router.use("/companies/search", searchCompanyRouter);
 router.use("/companies/searchAll", searchAllCompanyRouter);
 router.use("/companies/delete", deleteCompanyRouter);
-router.use("/companies/approveNot", approvedNotRouter);
+router.use("/companies/approvedNot", approvedNotRouter);
 router.use("/companies/approved", approvedRouter);
 
 // offer
