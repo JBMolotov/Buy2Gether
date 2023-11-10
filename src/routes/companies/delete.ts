@@ -2,6 +2,7 @@ import { Router } from "express";
 import { AppDataSource } from "../../data-source";
 import { Company } from "../../entity/Company";
 import { Offer } from "../../entity/Offer";
+import { Feedback } from "../../entity/Feedback";
 
 export const deleteCompanyRouter = Router();
 
@@ -13,16 +14,23 @@ deleteCompanyRouter.delete("/:id", async (req, res) => {
   // remove os clientes da oferta
   await AppDataSource.query('delete from client_offer_permission where offer_id = ' + +req.params.id);
 
-  // update deleteAt from offer
-  // update isDeleted from offer
+  // deleta todas as offer da company
   await AppDataSource
     .createQueryBuilder()
-    .update(Offer)
-    .set({ deletedAt: () => "CURRENT_TIMESTAMP", isDeleted: true })
+    .delete()
+    .from(Offer)
     .where({ companyId: +id })
     .execute();
 
-  // delete a company
+  // deleta todos os feedbacks da company
+  await AppDataSource
+    .createQueryBuilder()
+    .delete()
+    .from(Feedback)
+    .where({ companyId: +id })
+    .execute();
+
+  // deleta a company
   await AppDataSource
     .createQueryBuilder()
     .delete()
