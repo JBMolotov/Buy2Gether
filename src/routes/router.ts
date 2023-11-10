@@ -23,6 +23,12 @@ import { deleteOfferRouter } from "./offers/delete";
 import { joinOfferRouter } from "./offers/join";
 import { clientsJoinedRouter } from "./offers/clientsJoined";
 
+import { createFeedbackRouter } from "./feedbacks/create";
+
+import { searchAllFeedbackRouter } from "./feedbacks/searchAll";
+import { searchByClientFeedbackRouter } from "./feedbacks/searchByClient";
+import { searchByOfferFeedbackRouter } from "./feedbacks/searchByOffer";
+
 import { approveCompanyRouter } from "./superAdmin/approveCompany";
 
 export const router = Router();
@@ -52,6 +58,13 @@ router.use("/offers/searchAll", searchAllOfferRouter);
 router.use("/offers/delete", deleteOfferRouter);
 router.use("/offers/join", joinOfferRouter);
 router.use("/offers/clientsJoined", clientsJoinedRouter);
+
+// feedback
+router.use("/feedbacks/create", createFeedbackRouter);
+
+router.use("/feedbacks/searchAll", searchAllFeedbackRouter);
+router.use("/feedbacks/searchByClient", searchByClientFeedbackRouter);
+router.use("/feedbacks/searchByOffer", searchByOfferFeedbackRouter);
 
 // super admin
 router.use("/superAdmin/approveCompany", approveCompanyRouter);

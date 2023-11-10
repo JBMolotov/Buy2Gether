@@ -24,5 +24,12 @@ require("./offers/delete");
 require("./offers/join");
 require("./offers/clientsJoined");
 
+// feedback
+require("./feedbacks/create");
+
+require("./feedbacks/searchAll");
+require("./feedbacks/searchByClient");
+require("./feedbacks/searchByOffer");
+
 // super admin
 require("./superAdmin/approveCompany");

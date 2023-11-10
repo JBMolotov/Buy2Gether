@@ -5,6 +5,7 @@ import { Client } from "./entity/Client";
 import { SuperAdmin } from "./entity/SuperAdmin";
 import { Offer } from "./entity/Offer";
 import dotenv from "dotenv";
+import { Feedback } from "./entity/Feedback";
 
 dotenv.config();
 
@@ -17,7 +18,7 @@ export const AppDataSource = new DataSource({
   database: "postgres",
   synchronize: true,
   logging: false,
-  entities: [Company, Client, SuperAdmin, Offer],
+  entities: [Company, Client, SuperAdmin, Offer, Feedback],
   migrations: [],
   subscribers: [],
 });

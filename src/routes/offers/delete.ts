@@ -1,7 +1,6 @@
 import { Router } from "express";
 import { AppDataSource } from "../../data-source";
 import { Offer } from "../../entity/Offer";
-import { Client } from "../../entity/Client";
 
 export const deleteOfferRouter = Router();
 
@@ -9,6 +8,7 @@ export const deleteOfferRouter = Router();
 deleteOfferRouter.delete("/:id", async (req, res) => {
 
     // deleta os registros da oferta na tabela client_offer_permission
+    // remove os cliente da oferta
     await AppDataSource.query('delete from client_offer_permission where offer_id = ' + +req.params.id);
 
     // atualiza os dados da oferta
