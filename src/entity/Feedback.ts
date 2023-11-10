@@ -12,6 +12,9 @@ export class Feedback {
     public score!: number;
 
     @Column()
+    public companyId!: number;
+
+    @Column()
     public offerId!: number;
 
     @Column()
