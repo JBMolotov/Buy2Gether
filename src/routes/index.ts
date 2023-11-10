@@ -26,10 +26,11 @@ require("./offers/clientsJoined");
 
 // feedback
 require("./feedbacks/create");
-
+require("./feedbacks/update");
 require("./feedbacks/searchAll");
 require("./feedbacks/searchByClient");
 require("./feedbacks/searchByOffer");
+require("./feedbacks/delete");
 
 // super admin
 require("./superAdmin/approveCompany");

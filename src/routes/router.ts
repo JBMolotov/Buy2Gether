@@ -26,8 +26,10 @@ import { clientsJoinedRouter } from "./offers/clientsJoined";
 import { createFeedbackRouter } from "./feedbacks/create";
 
 import { searchAllFeedbackRouter } from "./feedbacks/searchAll";
+import { updateFeedbackRouter } from "./feedbacks/update";
 import { searchByClientFeedbackRouter } from "./feedbacks/searchByClient";
 import { searchByOfferFeedbackRouter } from "./feedbacks/searchByOffer";
+import { deleteFeedbackRouter } from "./feedbacks/delete";
 
 import { approveCompanyRouter } from "./superAdmin/approveCompany";
 
@@ -61,10 +63,11 @@ router.use("/offers/clientsJoined", clientsJoinedRouter);
 
 // feedback
 router.use("/feedbacks/create", createFeedbackRouter);
-
+router.use("/feedbacks/update", updateFeedbackRouter);
 router.use("/feedbacks/searchAll", searchAllFeedbackRouter);
 router.use("/feedbacks/searchByClient", searchByClientFeedbackRouter);
 router.use("/feedbacks/searchByOffer", searchByOfferFeedbackRouter);
+router.use("/feedbacks/delete", deleteFeedbackRouter);
 
 // super admin
 router.use("/superAdmin/approveCompany", approveCompanyRouter);
