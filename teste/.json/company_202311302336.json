@@ -1,0 +1,43 @@
+{
+"company": [
+	{
+		"id" : 2,
+		"cpfCnpj" : "23.958.780\/0001-82",
+		"name" : "Microsoft",
+		"email" : "contato@microsoft.com.br",
+		"password" : "micrO___1999",
+		"address" : "Avenida Paulist 750",
+		"fieldOfActivity" : "Tecnologia",
+		"isApproved" : false
+	},
+	{
+		"id" : 1,
+		"cpfCnpj" : "99.458.833\/0001-68",
+		"name" : "Padaria São Carlos",
+		"email" : "contato@padariasaocarlos.br",
+		"password" : "Pad_SC251",
+		"address" : "Rua São Carlos 400",
+		"fieldOfActivity" : "Alimentício",
+		"isApproved" : true
+	},
+	{
+		"id" : 3,
+		"cpfCnpj" : "03.449.472\/0001-14",
+		"name" : "Burger King",
+		"email" : "contato@burgerking.com.br",
+		"password" : "Whopper10_",
+		"address" : "Avenida Burger 100",
+		"fieldOfActivity" : "Alimentício",
+		"isApproved" : true
+	},
+	{
+		"id" : 4,
+		"cpfCnpj" : "46.367.663\/0001-40",
+		"name" : "Amazon",
+		"email" : "contato@amazon.com",
+		"password" : "_10Amazon__",
+		"address" : "Rua Amazonia 999",
+		"fieldOfActivity" : "Varejo",
+		"isApproved" : true
+	}
+]}

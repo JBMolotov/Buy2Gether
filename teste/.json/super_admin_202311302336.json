@@ -1,0 +1,9 @@
+{
+"super_admin": [
+	{
+		"id" : 1,
+		"name" : "buy2gether_admin",
+		"email" : "buy2gether@buy2gether.br",
+		"password" : "Admin765#"
+	}
+]}

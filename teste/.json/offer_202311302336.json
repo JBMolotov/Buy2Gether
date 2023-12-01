@@ -1,0 +1,67 @@
+{
+"offer": [
+	{
+		"id" : 2,
+		"name" : "Bombons do Dia",
+		"createdOn" : "2023-12-01T02:14:00.656Z",
+		"updatedAt" : null,
+		"deletedAt" : null,
+		"price" : 5,
+		"description" : "4 unidades de bombons do dia",
+		"minimalForFreeDelivery" : 10,
+		"minimalForConsolidation" : 5,
+		"totalAmount" : 10,
+		"isPublic" : true,
+		"version" : 1,
+		"companyId" : 1,
+		"isDeleted" : false
+	},
+	{
+		"id" : 3,
+		"name" : "Combo Whopper",
+		"createdOn" : "2023-12-01T02:16:26.129Z",
+		"updatedAt" : null,
+		"deletedAt" : null,
+		"price" : 15,
+		"description" : "Combo Whopper + Batata frita grande + Bebida Grande",
+		"minimalForFreeDelivery" : 20,
+		"minimalForConsolidation" : 15,
+		"totalAmount" : 25,
+		"isPublic" : true,
+		"version" : 1,
+		"companyId" : 3,
+		"isDeleted" : false
+	},
+	{
+		"id" : 4,
+		"name" : "Livros surpresas",
+		"createdOn" : "2023-12-01T02:19:35.099Z",
+		"updatedAt" : "2023-12-01T02:24:29.339Z",
+		"deletedAt" : null,
+		"price" : 10,
+		"description" : "Um livro surpresa dentre as seguintes opções: Boa noite, Harry Potter e Senhor dos Anéis",
+		"minimalForFreeDelivery" : 5,
+		"minimalForConsolidation" : 3,
+		"totalAmount" : 10,
+		"isPublic" : true,
+		"version" : 2,
+		"companyId" : 4,
+		"isDeleted" : false
+	},
+	{
+		"id" : 1,
+		"name" : "Marmita enche a pança",
+		"createdOn" : "2023-12-01T02:12:18.408Z",
+		"updatedAt" : "2023-12-01T02:25:12.872Z",
+		"deletedAt" : null,
+		"price" : 20,
+		"description" : "Marmita do dia acompanhada de uma bebida 300mL",
+		"minimalForFreeDelivery" : 8,
+		"minimalForConsolidation" : 5,
+		"totalAmount" : 15,
+		"isPublic" : true,
+		"version" : 3,
+		"companyId" : 1,
+		"isDeleted" : false
+	}
+]}

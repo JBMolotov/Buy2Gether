@@ -1,0 +1,48 @@
+{
+"client": [
+	{
+		"id" : 1,
+		"cpf" : "027.440.450-05",
+		"name" : "Pedro Santos",
+		"email" : "pedro@gmail.com.br",
+		"password" : "Pedro1234##",
+		"address" : "Rua São Carlos 20",
+		"phoneNumber" : "11912345678"
+	},
+	{
+		"id" : 3,
+		"cpf" : "026.450.358-05",
+		"name" : "Epaminondas",
+		"email" : "epaminondas@gmail.com",
+		"password" : "Epaminondas750_",
+		"address" : "Rua Brasil 10",
+		"phoneNumber" : "11912444678"
+	},
+	{
+		"id" : 4,
+		"cpf" : "580.401.220-74",
+		"name" : "George Washington",
+		"email" : "george_wash@gmail.com",
+		"password" : "Wash1000_",
+		"address" : "Rua Estados Unidos 1990",
+		"phoneNumber" : "68988472761"
+	},
+	{
+		"id" : 5,
+		"cpf" : "625.648.950-00",
+		"name" : "Tutancâmon",
+		"email" : "tutucamon@uol.com",
+		"password" : "Piramide_2",
+		"address" : "Rua Egito 990",
+		"phoneNumber" : "61987513728"
+	},
+	{
+		"id" : 2,
+		"cpf" : "026.440.450-05",
+		"name" : "Antedeguemon",
+		"email" : "antedeguimon@gmail.com.br",
+		"password" : "Antedeguemon90##",
+		"address" : "Rua São Carlos 200",
+		"phoneNumber" : "16912344678"
+	}
+]}

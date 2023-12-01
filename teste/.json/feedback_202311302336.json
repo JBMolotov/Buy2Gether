@@ -1,0 +1,27 @@
+{
+"feedback": [
+	{
+		"id" : 1,
+		"description" : "Marmita muito boa, matou minha fome, compraria de novo",
+		"score" : 5,
+		"companyId" : 1,
+		"offerId" : 1,
+		"clientId" : 1
+	},
+	{
+		"id" : 2,
+		"description" : "A marmita veio fria e tinha fios de cabelo na comida",
+		"score" : 1,
+		"companyId" : 1,
+		"offerId" : 1,
+		"clientId" : 4
+	},
+	{
+		"id" : 3,
+		"description" : "O livro veio com rasgos em algumas páginas e a capa estava riscada",
+		"score" : 2,
+		"companyId" : 4,
+		"offerId" : 4,
+		"clientId" : 5
+	}
+]}
