@@ -67,11 +67,10 @@ export function offerIsValid(offer: Offer): boolean {
 }
 
 function cpfCnpjIsValid(cpfCnpj: string): boolean {
-  // https://medium.com/shopify-hub/como-validar-cpf-e-cnpj-usando-expressões-regulares-regex-com-javascript-60779229455d
-  // https://pt.stackoverflow.com/questions/11045/expressão-regular-para-validar-um-campo-que-aceita-cpf-ou-cnpj
   cpfCnpj = cpfCnpj.replace(/[^\d]+/g, "");
-  const cnpjRegex = /^\d{15}$/;
-  return cnpjRegex.test(cpfCnpj);
+  const cpfRegex = /^\d{11}$/; // Regular expression for CPF
+  const cnpjRegex = /^\d{14}$/; // Regular expression for CNPJ
+  return cpfRegex.test(cpfCnpj) || cnpjRegex.test(cpfCnpj);
 }
 
 export function isCPFValid(cpf: string): boolean {

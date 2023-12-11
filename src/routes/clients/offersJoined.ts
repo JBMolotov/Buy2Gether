@@ -9,11 +9,11 @@ offersJoinedRouter.get("/:clientId", async (req, res) => {
   const manager = AppDataSource.createEntityManager();
   const client = await manager.getRepository(Client).find({
     relations: {
-        offers: true,
+      offers: true,
     },
     where: {
-        id: +req.params.clientId,
-    }
+      id: +req.params.clientId,
+    },
   });
 
   console.log(client);

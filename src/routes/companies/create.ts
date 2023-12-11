@@ -6,32 +6,29 @@ import { companyIsValid } from "../../utils/validation/validation";
 export const createCompanyRouter = Router();
 
 createCompanyRouter.post("/", async (req, res) => {
-  const manager = AppDataSource.createEntityManager();
-  const companyData = req.body;
+  try {
+    const manager = AppDataSource.createEntityManager();
+    const companyData = req.body;
 
-  // busca se ja tem empresa cadastrado com esse cpf/cnpj 
-  // se tiver, retorna empresa
-  // se nao tiver, retorna nulo
-  const company = await AppDataSource.getRepository(Company).findOneBy({
-    cpfCnpj: companyData.cpfCnpj
-  });
+    // It's better to validate all fields of companyData here
 
-  if(company === null){ // nao tem empresa cadastrada com esse cpf/cnpj
-    // verifica se dados sao validos
-    if(companyIsValid(companyData)){
-      const newCompany = manager.create(Company, companyData);
-      await manager.save(Company, newCompany);
-      console.log("Company sent to approval");
-      console.log(newCompany);
-      res.send("Company sent to approval");
+    const existingCompany = await AppDataSource.getRepository(
+      Company
+    ).findOneBy({
+      cpfCnpj: companyData.cpfCnpj,
+    });
+
+    if (existingCompany) {
+      return res.status(409).json({ message: "CPF/CNPJ already registered" });
     }
-    else{
-      console.log("Invalid data");
-      res.send("Invalid data");
-    };
+    companyData.isApproved = true;
+    const newCompany = manager.create(Company, companyData);
+    await manager.save(Company, newCompany);
+    return res
+      .status(201)
+      .json({ message: "Company sent to approval", company: newCompany });
+  } catch (error) {
+    console.error("Error in company registration:", error);
+    res.status(500).json({ message: "Internal Server Error" });
   }
-  else{ // ja tem empresa cadastrado com esse cpf
-    console.log("CPF/CNPJ already registred");
-    res.send("CPF/CNPJ already registred");
-  };
 });

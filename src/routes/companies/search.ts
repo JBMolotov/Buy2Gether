@@ -8,9 +8,20 @@ export const searchCompanyRouter = Router();
 searchCompanyRouter.get("/:id", async (req, res) => {
   const id = req.params.id;
   const company = await AppDataSource.getRepository(Company).findOneBy({
-    id: +id
+    id: +id,
   });
-  console.log(company)
+  console.log(company);
 
   res.send(company);
+});
+
+searchCompanyRouter.post("/", async (req, res) => {
+  const { email, password } = req.body;
+  const client = await AppDataSource.getRepository(Company).findOneBy({
+    email,
+    password,
+  });
+  console.log(client);
+
+  res.send(client);
 });

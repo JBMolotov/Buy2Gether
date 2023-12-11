@@ -5,29 +5,49 @@ import { Client } from "../../entity/Client";
 
 export const joinOfferRouter = Router();
 
-// offer -> id
-// client -> id
-// client joins offer with offerId and clientId
 joinOfferRouter.put("/:offerId/:clientId", async (req, res) => {
+  const offerId = +req.params.offerId;
+  const clientId = +req.params.clientId;
 
+  try {
     const offer = await AppDataSource.getRepository(Offer).findOneBy({
-        id: +req.params.offerId
+      id: offerId,
     });
     const client = await AppDataSource.getRepository(Client).findOneBy({
-        id: +req.params.clientId
+      id: clientId,
     });
 
-    if(offer != null && client != null){
-        await AppDataSource.createQueryBuilder()
-            .relation(Offer, 'clients')
-            .of(offer)
-            .add(client);
+    if (!offer || !client) {
+      return res.status(404).send("Client or offer not registered");
+    }
 
-        console.log("Client " + client.id + " joined offer " + offer.id);
-        res.send("Client " + client.id + " joined offer " + offer.id);
+    // Check if the client is already joined
+    const existingClient = await AppDataSource.createQueryBuilder()
+      .relation(Offer, "clients")
+      .of(offer)
+      .loadMany();
+
+    if (existingClient.find((c) => c.id === clientId)) {
+      // Remove client from the offer
+      await AppDataSource.createQueryBuilder()
+        .relation(Offer, "clients")
+        .of(offer)
+        .remove(client);
+
+      return res.send(
+        "Client " + client.id + " removed from offer " + offer.id
+      );
+    } else {
+      // Add client to the offer
+      await AppDataSource.createQueryBuilder()
+        .relation(Offer, "clients")
+        .of(offer)
+        .add(client);
+
+      return res.send("Client " + client.id + " joined offer " + offer.id);
     }
-    else{
-        console.log("Client or offer not registered");
-        res.send("Client or offer not registered");
-    }
+  } catch (error) {
+    console.error("Error joining offer: ", error);
+    res.status(500).send("Internal Server Error");
+  }
 });

@@ -9,29 +9,29 @@ createClientRouter.post("/", async (req, res) => {
   const manager = AppDataSource.createEntityManager();
   const clientData = req.body;
 
-  // busca se ja tem cliente cadastrado com esse cpf 
+  // busca se ja tem cliente cadastrado com esse cpf
   // se tiver, retorna cliente
   // se nao tiver, retorna nulo
   const client = await AppDataSource.getRepository(Client).findOneBy({
-    cpf: clientData.cpf
+    cpf: clientData.cpf,
   });
 
-  if(client === null){ // nao tem cliente cadastrado com esse cpf
+  if (client === null) {
+    // nao tem cliente cadastrado com esse cpf
     // verifica se dados sao validos
-    if(clientIsValid(clientData)){
+    if (clientData) {
       const newClient = manager.create(Client, clientData);
       await manager.save(Client, newClient);
       console.log("Registered client");
       console.log(newClient);
       res.send("Registered client");
-    }
-    else{
+    } else {
       console.log("Invalid data");
       res.send("Invalid data");
-    };
-  }
-  else{ // ja tem cliente cadastrado com esse cpf
+    }
+  } else {
+    // ja tem cliente cadastrado com esse cpf
     console.log("CPF already registred");
     res.send("CPF already registred");
-  };
+  }
 });
