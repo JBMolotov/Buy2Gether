@@ -24,14 +24,14 @@ createClientRouter.post("/", async (req, res) => {
       await manager.save(Client, newClient);
       console.log("Registered client");
       console.log(newClient);
-      res.send("Registered client");
+      res.json({ message: "Client created successfully" });
     } else {
       console.log("Invalid data");
       res.send("Invalid data");
     }
   } else {
     // ja tem cliente cadastrado com esse cpf
-    console.log("CPF already registred");
+    console.log(clientData);
     res.send("CPF already registred");
   }
 });
